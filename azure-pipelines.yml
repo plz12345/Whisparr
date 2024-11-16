@@ -1190,9 +1190,6 @@ stages:
           ./build.sh --backend -f net6.0 -r win-x64
           TEST_DIR=_tests/net6.0/win-x64/publish/ ./test.sh Windows Unit Coverage
         displayName: Coverage Unit Tests
-      - task: SonarCloudAnalyze@2
-        condition: eq(variables['System.PullRequest.IsFork'], 'False')
-        displayName: Publish SonarCloud Results
       - task: reportgenerator@5.3.11
         displayName: Generate Coverage Report
         inputs:
