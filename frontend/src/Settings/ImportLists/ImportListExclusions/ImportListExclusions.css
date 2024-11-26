@@ -5,20 +5,20 @@
 }
 
 .title {
-  flex: 0 0 600px;
+  flex: 1 0 200px;
 }
 
-.tmdbId,
+.foreignId {
+  flex: 0 0 275px;
+}
+
 .movieYear {
-  flex: 0 0 70px;
+  flex: 0 0 100px;
 }
 
 .addImportExclusion {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 10px;
-}
-
-.addButton {
+  justify-content: flex-start;
+  padding-bottom: 10px;
   text-align: center;
 }

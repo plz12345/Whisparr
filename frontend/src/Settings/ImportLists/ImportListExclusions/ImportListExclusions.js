@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import FieldSet from 'Components/FieldSet';
-import Icon from 'Components/Icon';
-import Link from 'Components/Link/Link';
+import Button from 'Components/Link/Button';
 import PageSectionContent from 'Components/Page/PageSectionContent';
-import { icons } from 'Helpers/Props';
 import translate from 'Utilities/String/translate';
 import EditImportListExclusionModalConnector from './EditImportListExclusionModalConnector';
 import ImportListExclusion from './ImportListExclusion';
@@ -46,13 +44,21 @@ class ImportListExclusions extends Component {
 
     return (
       <FieldSet legend={translate('ImportListExclusions')}>
+        <div className={styles.addImportExclusion}>
+          <Button
+            className={styles.addButton}
+            onPress={this.onAddImportExclusionPress}
+          >
+            {translate('AddExclusion')}
+          </Button>
+        </div>
         <PageSectionContent
           errorMessage={translate('ImportListExclusionsLoadError')}
           {...otherProps}
         >
           <div className={styles.importListExclusionsHeader}>
-            <div className={styles.tmdbId}>
-              {translate('TMDBId')}
+            <div className={styles.foreignId}>
+              {translate('ForeignId')}
             </div>
             <div className={styles.title}>
               {translate('Title')}
@@ -76,15 +82,6 @@ class ImportListExclusions extends Component {
                 );
               })
             }
-          </div>
-
-          <div className={styles.addImportExclusion}>
-            <Link
-              className={styles.addButton}
-              onPress={this.onAddImportExclusionPress}
-            >
-              <Icon name={icons.ADD} />
-            </Link>
           </div>
 
           <EditImportListExclusionModalConnector

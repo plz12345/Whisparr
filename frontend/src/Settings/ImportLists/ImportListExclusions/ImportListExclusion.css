@@ -9,18 +9,31 @@
 
 .movieTitle {
   @add-mixin truncate;
-
-  flex: 0 0 600px;
+  flex: 1 0 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.tmdbId,
+.foreignId {
+  flex: 0 0 275px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .movieYear {
-  flex: 0 0 70px;
+  flex: 0 0 50px;
 }
 
 .actions {
   display: flex;
   justify-content: flex-end;
-  flex: 1 0 auto;
+  flex: 0 0 50px;
   padding-right: 10px;
+}
+
+.actions>a {
+  padding-right: 5px;
+  color: inherit;
 }

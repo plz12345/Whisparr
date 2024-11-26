@@ -9,7 +9,7 @@ import EditImportListExclusionModalContent from './EditImportListExclusionModalC
 
 const newImportExclusion = {
   movieTitle: '',
-  tmdbId: 0,
+  foreignId: '',
   movieYear: 0
 };
 

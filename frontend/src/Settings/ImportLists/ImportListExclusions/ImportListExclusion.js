@@ -10,7 +10,6 @@ import EditImportListExclusionModalConnector from './EditImportListExclusionModa
 import styles from './ImportListExclusion.css';
 
 class ImportListExclusion extends Component {
-
   //
   // Lifecycle
 
@@ -49,14 +48,23 @@ class ImportListExclusion extends Component {
     this.props.onConfirmDeleteImportExclusion(this.props.id);
   };
 
+  getExternalUrl = () => {
+    let itemUrl = '';
+    if (isNaN(this.props.foreignId)) {
+      itemUrl = `https://stashdb.org/scenes/${this.props.foreignId}`;
+    } else {
+      itemUrl = `https://www.themoviedb.org/movie/${this.props.foreignId}`;
+    }
+    return itemUrl;
+  };
+
   //
   // Render
-
   render() {
     const {
       id,
       movieTitle,
-      tmdbId,
+      foreignId,
       movieYear
     } = this.props;
 
@@ -66,11 +74,18 @@ class ImportListExclusion extends Component {
           styles.importExclusion
         )}
       >
-        <div className={styles.tmdbId}>{tmdbId}</div>
-        <div className={styles.movieTitle}>{movieTitle}</div>
+        <div className={styles.foreignId} title={foreignId}>{foreignId}</div>
+        <div className={styles.movieTitle} title={movieTitle}>{movieTitle}</div>
         <div className={styles.movieYear}>{movieYear}</div>
 
         <div className={styles.actions}>
+          <Link
+            className={styles.exclusionExternalLink}
+            to={this.getExternalUrl()}
+            target='_blank'
+          >
+            <Icon name={icons.EXTERNAL_LINK} />
+          </Link>
           <Link
             onPress={this.onEditImportExclusionPress}
           >
@@ -102,7 +117,7 @@ class ImportListExclusion extends Component {
 ImportListExclusion.propTypes = {
   id: PropTypes.number.isRequired,
   movieTitle: PropTypes.string.isRequired,
-  tmdbId: PropTypes.number.isRequired,
+  foreignId: PropTypes.string.isRequired,
   movieYear: PropTypes.number.isRequired,
   onConfirmDeleteImportExclusion: PropTypes.func.isRequired
 };

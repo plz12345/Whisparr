@@ -33,7 +33,7 @@ function EditImportListExclusionModalContent(props) {
 
   const {
     movieTitle = '',
-    tmdbId,
+    foreignId = '',
     movieYear
   } = item;
 
@@ -62,13 +62,12 @@ function EditImportListExclusionModalContent(props) {
               {...otherProps}
             >
               <FormGroup>
-                <FormLabel>{translate('TMDBId')}</FormLabel>
-
+                <FormLabel>{translate('ForeignId')}</FormLabel>
                 <FormInputGroup
-                  type={inputTypes.NUMBER}
-                  name="tmdbId"
-                  helpText={translate('TmdbIdHelpText')}
-                  {...tmdbId}
+                  type={inputTypes.TEXT}
+                  name="foreignId"
+                  helpText={translate('ImportListExclusionsForeignIdHelpText')}
+                  {...foreignId}
                   onChange={onInputChange}
                 />
               </FormGroup>
